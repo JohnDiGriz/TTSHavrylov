@@ -11,9 +11,13 @@ namespace TTSHavrylov
         {
             Console.OutputEncoding = Encoding.Unicode;
             Console.InputEncoding = Encoding.Unicode;
-            Console.WriteLine("Enter path to Language folder: ");
+            Console.WriteLine("Enter path to Language folder (enter \\def for default): ");
             var folderName = Console.ReadLine();
-            Language lang = new Language(folderName);
+            Language lang;
+            if (folderName == "\\def")
+                lang = new Language("../../../../Havrylov");
+            else
+                lang = new Language(folderName);
             string str = "";
             do
             {

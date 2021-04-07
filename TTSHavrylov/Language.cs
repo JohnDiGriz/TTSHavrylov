@@ -34,6 +34,7 @@ namespace TTSHavrylov
             var lastPhonem = "";
             for (int i = 0; i < str.Length; i++)
             {
+                
                 if (!_stopSounds.Contains(lastPhonem))
                     try
                     {
@@ -62,6 +63,8 @@ namespace TTSHavrylov
         {
             if (Regex.IsMatch(value, _spaceRegex))
                 return "+space";
+            else if (value == "ї")
+                return "йі";
             else
                 return value;
         }

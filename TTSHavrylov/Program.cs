@@ -19,13 +19,18 @@ namespace TTSHavrylov
             else
                 lang = new Language(folderName);
             string str = "";
+            byte[] sound = new byte[0];
             do
             {
                 try
                 {
-                    Console.WriteLine("Write line (enter \\ext to exit): ");
+                    Console.WriteLine("Write line (enter \\ext to exit, enter \\exp to export prev line): ");
                     str = Console.ReadLine();
-                    var sound = lang.GenerateSound(str);
+                    if (str == "\\exp")
+                    {
+                        File.WriteAllBytes("export.wav", sound);
+                    }
+                    sound = lang.GenerateSound(str);
                     using (MemoryStream ms = new MemoryStream(sound))
                     {
                         // Construct the sound player
